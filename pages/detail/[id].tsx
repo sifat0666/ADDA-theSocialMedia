@@ -4,7 +4,7 @@ import { BASE_URL } from '../../utils';
 // import { getServerSideProps } from 'next';
 import { Content } from '../../types';
 import { MdOutlineCancel } from 'react-icons/md';
-import { BsFillPlayFill } from 'react-icons/bs';
+import { BsCheckLg, BsFillPlayFill } from 'react-icons/bs';
 import { HiVolumeUp, HiVolumeOff } from 'react-icons/hi';
 import { isImage } from '../../utils/isImage';
 import { useRouter } from 'next/router';
@@ -29,18 +29,26 @@ const Detail = ({postDetails}: IProps) => {
 
   const [post, setPost] = useState(postDetails)
 
+
+
+
   const handleLike = async (like: boolean) => {
-    console.log(like)
-    // setLiked(!liked)
-    if(userProfile){
-      const {data} = await axios.put(`${BASE_URL}/api/like`, {
+
+
+    if (userProfile) {
+      const res = await axios.put(`${BASE_URL}/api/like`, {
         userId: userProfile._id,
         postId: post._id,
         like
-      })
-      setPost({ ...post, likes: data.likes });
+      });
+
+
+      setPost({ ...post, likes: res.data.likes });
     }
-  }
+
+  };
+
+
 
 
   if(!post) return null
@@ -91,9 +99,9 @@ const Detail = ({postDetails}: IProps) => {
               <div className="px-10 mt-10">
                 {userProfile && (
                   <LikeButton
-                    handleLike={handleLike}
-                    
                     likes={post.likes}
+                    handleLike={() => handleLike(true)}
+                    handleDislike={() => handleLike(false)}
                   />
                 )}
                 <p className='font-semibold text-md '>{post.likes?.length || 0} likes</p>

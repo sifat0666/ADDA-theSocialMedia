@@ -11,8 +11,12 @@ import { AiOutlineLogout } from 'react-icons/ai';
 
 const Navbar = () => {
 
-  const user = false
-  const {userProfile, addUser, removeUser} = useAuthStore()
+
+  //i dont wanna type zustand
+  const {userProfile, addUser, removeUser} = useAuthStore() as any
+  console.log("🚀 ~ file: Navbar.tsx ~ line 16 ~ Navbar ~ userProfile", userProfile)
+
+  
 
   return (
     <div className='flex items-center justify-between w-full px-4 py-2 border-b-2 border-gray-200'>
