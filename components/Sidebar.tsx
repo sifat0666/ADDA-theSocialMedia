@@ -22,7 +22,7 @@ const Sidebar: NextPage = () => {
     <div>
       <div
         className='block m-2 mt-3 ml-4 text-xl xl:hidden'
-        onClick={() => setShowSidebar(!showSidebar)}
+        onClick={() => setShowSidebar(prv => !prv)}
       >
         {showSidebar ? <ImCancelCircle /> : <AiOutlineMenu />}
       </div>
@@ -43,7 +43,8 @@ const Sidebar: NextPage = () => {
           
           <Discover />
           <SuggestedAccounts
-  
+            fetchAllUsers={fetchAllUsers}
+            allUsers={allUsers}  
     
           />
           <Footer />

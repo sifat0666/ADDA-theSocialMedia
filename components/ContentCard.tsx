@@ -50,7 +50,7 @@ const ContentCard = ({post}: IProps) => {
                             className='rounded-full'
                             src={post.postedBy.image}
                             alt='profile photo'
-                            layout='responsive'
+
                         />
                         </>
                     </Link>

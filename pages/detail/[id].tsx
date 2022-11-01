@@ -29,10 +29,14 @@ const Detail = ({postDetails}: IProps) => {
 
   const [post, setPost] = useState(postDetails)
 
-
+  const [comment, setComment] = useState('')
+  const [isPostingComment, setIsPostingComment] = useState(false)
+  console.log('user profile',userProfile._id)
+  console.log(post.comments)
 
 
   const handleLike = async (like: boolean) => {
+
 
 
     if (userProfile) {
@@ -46,6 +50,25 @@ const Detail = ({postDetails}: IProps) => {
       setPost({ ...post, likes: res.data.likes });
     }
 
+  };
+
+
+  const addComment = async (e: { preventDefault: () => void }) => {
+    e.preventDefault();
+
+    if (userProfile) {
+      if (comment) {
+        setIsPostingComment(true);
+        const res = await axios.put(`${BASE_URL}/api/post/${post._id}`, {
+          userId: userProfile._id,
+          comment,
+        });
+
+        setPost({ ...post, comments: res.data.comments });
+        setComment('');
+        setIsPostingComment(false);
+      }
+    }
   };
 
 
@@ -106,7 +129,14 @@ const Detail = ({postDetails}: IProps) => {
                 )}
                 <p className='font-semibold text-md '>{post.likes?.length || 0} likes</p>
               </div>
-              <Comments />
+              <Comments
+                comment={comment}
+                setComment={setComment}
+                addComment={addComment}
+                isPostingComment={isPostingComment}
+                comments={post.comments}
+                post= {post}
+              />
         </div>
       </div>
     </div>
