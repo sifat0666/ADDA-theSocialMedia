@@ -12,13 +12,13 @@ const LikeButton = ({ likes, handleDislike, handleLike}: any) => {
 
   
 
-  // console.log('likes array: ' , likes)
+  // ('likes array: ' , likes)
 
   // let filterLikes = likes.filter((item: any) => item._ref === userProfile?._id);
-  // console.log("🚀 ~ file: LikeButton.tsx ~ line 16 ~ LikeButton ~ filterLikes", filterLikes)
+  // ("🚀 ~ file: LikeButton.tsx ~ line 16 ~ LikeButton ~ filterLikes", filterLikes)
 
   // useEffect(()=>{
-  //   console.log('use effect')
+  //   ('use effect')
   // }, [filterLikes])
 
   let filterLikes = likes?.filter((item: any) => item._ref === userProfile?._id);

@@ -8,6 +8,7 @@ import axios from 'axios';
 import { BASE_URL } from '../utils';
 import { useRouter } from 'next/router';
 import useAuthStore from '../store/authStore';
+import { BsCheckLg } from 'react-icons/bs';
 
 function isImage(url: string) {
   return /\.(jpg|jpeg|png|webp|avif|gif|svg)$/.test(url);
@@ -30,6 +31,9 @@ const Upload = () => {
     const [caption, setCaption] = useState('')
     const [topic, setTopic] = useState(topics[0].name)
     const [savingPost, setSavingPost] = useState(false)
+
+    console.log(loading)
+
     
   const uploadContent = async (e: any) => {
     const selectedFile = e.target.files[0];
@@ -80,6 +84,8 @@ const Upload = () => {
       };
 
       await axios.post(`${BASE_URL}/api/post`, data);
+
+      console.log('done')
         
       router.push('/');
     }
@@ -157,6 +163,7 @@ const Upload = () => {
             type='text'
             onChange={e => setCaption(e.target.value)}
             className='p-2 border-2 border-gray-200 rounded outline-none lg:after:w-650 text-md'
+            required
           />
           <label className='font-medium text-md '>Choose a topic</label>
 
@@ -174,7 +181,7 @@ const Upload = () => {
           </select>
           <div className='flex gap-6 mt-10'>
             <button
-               onClick={()=>{}}
+               onClick={handleDiscard}
               type='button'
               className='p-2 font-medium border-2 border-gray-300 rounded outline-none text-md w-28 lg:w-44'
             >
@@ -185,7 +192,7 @@ const Upload = () => {
               type='button'
               className='p-2 font-medium text-white bg-blue-500 rounded outline-none text-md w-28 lg:w-44'
             >
-                Post
+                {loading ? 'loading' : 'Post'}
 
             </button>
           </div>

@@ -42,7 +42,7 @@ const ContentCard = ({post}: IProps) => {
         <div>
             <div className='flex gap-3 p-2 font-semibold rounded cursor-pointer'>
                 <div className='w-10 h-10 md:w-16 md:h-16'>
-                    <Link href='/'>
+                    <Link href={`/profile/${post.postedBy._id}`}>
                         <>
                         <Image
                             width={62}

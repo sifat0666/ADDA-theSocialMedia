@@ -31,8 +31,7 @@ const Detail = ({postDetails}: IProps) => {
 
   const [comment, setComment] = useState('')
   const [isPostingComment, setIsPostingComment] = useState(false)
-  console.log('user profile',userProfile._id)
-  console.log(post.comments)
+
 
 
   const handleLike = async (like: boolean) => {
