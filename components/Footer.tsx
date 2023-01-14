@@ -17,7 +17,7 @@ const Footer: NextPage = () => (
     <List items={footerList1} mt={false} />
     <List items={footerList2} mt />
     <List items={footerList3} mt />
-    <p className='mt-5 text-sm text-gray-400'>© 2022 ADDA</p>
+    <p className='mt-5 text-sm text-gray-400'>© 2022 FANFAIR</p>
   </div>
 );
 
