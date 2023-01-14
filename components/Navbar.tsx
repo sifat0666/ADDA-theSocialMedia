@@ -26,7 +26,7 @@ const Navbar = () => {
   return (
     <div className="flex items-center justify-between w-full px-4 py-2 border-b-2 border-gray-200">
       <Link href="/">
-        <span className="text-3xl cursor-pointer pl-7 bold">ADDA</span>
+        <span className="text-3xl cursor-pointer pl-7 bold">FanFair</span>
       </Link>
 
       <div className="relative hidden md:block">
